@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>醫整中心所需參數檔案</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        h2 { color: #1b61a0; }
+        .section-title {
+            font-weight: bold;
+            cursor: pointer;
+            background-color: #c6e1f0;
+            padding: 8px;
+            border: 1px solid #ffffff;
+            margin-top: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        label { margin: 5px; }
+        button { margin-top: 15px; padding: 10px 20px; }
+        .sub-options {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            margin-left: 10px;
+        }
+        .sub-options.open {
+           max-height: 1000px;
+            transition: max-height 0.5s ease-in;
+        }
+        .arrow {
+            font-size: 16px;
+            transition: transform 0.3s ease;
+        }
+        .arrow.rotate {
+            transform: rotate(90deg);
+        }
+        #result {    margin-top: 20px;
+    border-top: 1px solid #ccc;
+    padding-top: 10px;
+    background-color: #f9f9f9; /* ✅ 這是整塊底色 */
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 8px;}
+    </style>
+</head>
+<body>
+
+<h2>醫整中心所需參數表單</h2>
+<form id="applicationForm">
+    <!-- 病人資訊 -->
+    <div class="section-title" onclick="toggleSubOptions('patientInfo', this)">
+        病人資訊
+        <span class="arrow">&#9654;</span>
+    </div>
+    <div class="sub-options" id="patientInfo">
+        <label><input type="checkbox" name="option" value="基本資料"> 基本資料</label>
+        <label><input type="checkbox" name="option" value="身高體重歷次紀錄"> 身高體重歷次紀錄</label>
+        <label><input type="checkbox" name="option" value="門診血壓紀錄"> 門診血壓紀錄</label>
+        <label><input type="checkbox" name="option" value="理學檢查 基本檢查"> 理學檢查: 基本檢查</label>
+        <label><input type="checkbox" name="option" value="理學檢查 基本檢查 再入院"> 理學檢查: 基本檢查 再入院</label>
+        <label><input type="checkbox" name="option" value="理學檢查 入院護理評估"> 理學檢查: 入院護理評估</label>
+        <label><input type="checkbox" name="option" value="重大傷病"> 重大傷病</label>
+        <label><input type="checkbox" name="option" value="死亡通報"> 死亡通報</label>
+        <label><input type="checkbox" name="option" value="死因統計"> 死因統計</label>
+        <label><input type="checkbox" name="option" value="DNR 註記 01_病人醫療特殊註記"> DNR 註記 01_病人醫療特殊註記</label>
+        <label><input type="checkbox" name="option" value="DNR 註記 02_健保卡註記"> DNR 註記 02_健保卡註記</label>
+        <label><input type="checkbox" name="option" value="過敏記錄"> 過敏記錄</label>
+        <label><input type="checkbox" name="option" value="輸血反應紀錄"> 輸血反應紀錄</label>
+        <label><input type="checkbox" name="option" value="藥物不良反應紀錄"> 藥物不良反應紀錄</label>
+        <label><input type="checkbox" name="option" value="血袋檔 (新系統)"> 血袋檔 (新系統)</label>
+        <label><input type="checkbox" name="option" value="血袋檔 (舊系統)"> 血袋檔 (舊系統)</label>
+        <label><input type="checkbox" name="option" value="輸血反應紀錄 (新系統)"> 輸血反應紀錄 (新系統)</label>
+        <label><input type="checkbox" name="option" value="輸血反應紀錄 (舊系統)"> 輸血反應紀錄 (舊系統)</label>
+    </div>
+
+    <!-- 癌症資訊 -->
+    <div class="section-title" onclick="toggleSubOptions('cancerInfo', this)">
+        癌症資訊
+        <span class="arrow">&#9654;</span>
+    </div>
+    <div class="sub-options" id="cancerInfo">
+        <label><input type="checkbox" name="option" value="癌症登記"> 癌症登記</label>
+        <label><input type="checkbox" name="option" value="肺癌治療計畫"> 肺癌治療計畫</label>
+        <label><input type="checkbox" name="option" value="乳癌治療計畫"> 乳癌治療計畫</label>
+        <label><input type="checkbox" name="option" value="肝細胞癌治療計畫書"> 肝細胞癌治療計畫書</label>
+        <label><input type="checkbox" name="option" value="八大癌以外癌症治療計畫書"> 八大癌以外癌症治療計畫書(八大癌:口腔、鼻咽、子宮、肝、肺、乳房、大腸、胃)</label>
+        <label><input type="checkbox" name="option" value="口腔癌治療計畫書"> 口腔癌治療計畫書</label>
+        <label><input type="checkbox" name="option" value="新版治療計畫書"> 新版治療計畫書</label>
+        <label><input type="checkbox" name="option" value="癌症治療副作用評估"> 癌症治療副作用評估</label>
+        <label><input type="checkbox" name="option" value="癌症治療效果追蹤評估"> 癌症治療效果追蹤評估</label>
+    </div>
+    
+       <div class="section-title" onclick="toggleSubOptions('clinicinfo', this)">
+        就診資訊
+        <span class="arrow">&#9654;</span>
+    </div>
+    <div class="sub-options" id="clinicinfo">
+        <label><input type="checkbox" name="option" value="門診就診資訊"> 門診就診資訊</label>
+        <label><input type="checkbox" name="option" value="住院就診資訊"> 住院就診資訊</label>
+        <label><input type="checkbox" name="option" value="急診就診資訊"> 急診就診資訊</label>
+        <label><input type="checkbox" name="option" value="住院每日照護人員名單"> 住院每日照護人員名單</label>
+ 
+    </div>
+    
+           <div class="section-title" onclick="toggleSubOptions('clinicinfoother', this)">
+        其他就診資訊
+        <span class="arrow">&#9654;</span>
+    </div>
+    <div class="sub-options" id="clinicinfoother">
+        <label><input type="checkbox" name="option" value="轉診紀錄"> 轉診紀錄</label>
+        <label><input type="checkbox" name="option" value="轉床紀錄"> 轉床紀錄</label>
+        <label><input type="checkbox" name="option" value="加護病房床位_2009/02前"> 加護病房床位_2009/02前</label>
+        <label><input type="checkbox" name="option" value="加護病房床位_2009/02後"> 加護病房床位_2009/02後</label>
+         <label><input type="checkbox" name="option" value="急診檢傷"> 急診檢傷</label>
+         <label><input type="checkbox" name="option" value="急診啟動作業"> 急診啟動作業</label>
+         <label><input type="checkbox" name="option" value="急診掛號"> 急診掛號</label>
+         <label><input type="checkbox" name="option" value="急診離部拉回"> 急診離部拉回</label>
+         <label><input type="checkbox" name="option" value="急診流行病學史"> 急診流行病學史</label>
+         <label><input type="checkbox" name="option" value="急診病人動向表"> 急診病人動向表</label>
+         <label><input type="checkbox" name="option" value="急診離部檢核"> 急診離部檢核</label>
+         <label><input type="checkbox" name="option" value="急診來診病歷"> 急診來診病歷</label>
+         <label><input type="checkbox" name="option" value="急診醫令執行紀錄"> 急診醫令執行紀錄</label>
+         <label><input type="checkbox" name="option" value="急診醫令執行紀錄_血品 (新系統)"> 急診醫令執行紀錄_血品 (新系統)</label>
+         <label><input type="checkbox" name="option" value="急診醫令執行紀錄_血品 (舊系統)"> 急診醫令執行紀錄_血品 (舊系統)</label>
+         <label><input type="checkbox" name="option" value="照會記錄主檔"> 照會記錄主檔</label>
+         <label><input type="checkbox" name="option" value="照會時間"> 照會時間</label>
+         <label><input type="checkbox" name="option" value="照會申請內容"> 照會申請內容</label>
+         <label><input type="checkbox" name="option" value="照會回覆內容"> 照會回覆內容</label>
+    </div>
+    
+    
+       <div class="section-title" onclick="toggleSubOptions('diag', this)">
+        診斷與處置
+        <span class="arrow">&#9654;</span>
+    </div>
+    <div class="sub-options" id="diag">
+        <label><input type="checkbox" name="option" value="門診臨床診斷"> 門診臨床診斷</label>
+        <label><input type="checkbox" name="option" value="住院臨床診斷"> 住院臨床診斷</label>
+        <label><input type="checkbox" name="option" value="住院病歷室疾分診斷與處置"> 住院病歷室疾分診斷與處置</label>
+        <label><input type="checkbox" name="option" value="新生兒住院病歷室疾分診斷與處置"> 新生兒住院病歷室疾分診斷與處置</label>
+         <label><input type="checkbox" name="option" value="急診臨床診斷"> 急診臨床診斷</label>
+         <label><input type="checkbox" name="option" value="門急申報處置"> 門急申報處置</label>
+         <label><input type="checkbox" name="option" value="住院處置碼"> 住院處置碼</label>
+         <label><input type="checkbox" name="option" value="入院病摘 (診斷)"> 入院病摘 (診斷)</label>
+         <label><input type="checkbox" name="option" value="出院病摘 (診斷)"> 出院病摘 (診斷)</label>
+    
+    </div>
+
+       <div class="section-title" onclick="toggleSubOptions('order', this)">
+        批價醫令
+        <span class="arrow">&#9654;</span>
+    </div>
+    <div class="sub-options" id="order">
+        <label><input type="checkbox" name="option" value="門診批價醫令"> 門診批價醫令</label>
+        <label><input type="checkbox" name="option" value="住院批價醫令"> 住院批價醫令</label>
+        <label><input type="checkbox" name="option" value="急診批價醫令"> 急診批價醫令</label>
+ 
+    
+    </div>
+
+       <div class="section-title" onclick="toggleSubOptions('icu', this)">
+        ICIP-加護病房臨床資訊系統
+        <span class="arrow">&#9654;</span>
+    </div>
+    <div class="sub-options" id="icu">
+        <label><input type="checkbox" name="option" value="ICU 生命徵象與昏迷指數"> ICU 生命徵象與昏迷指數</label>
+        <label><input type="checkbox" name="option" value="OR 生命徵象"> OR 生命徵象</label>
+        <label><input type="checkbox" name="option" value="ICU/OR 輸注點滴"> ICU/OR 輸注點滴</label>
+         <label><input type="checkbox" name="option" value="ICU 呼吸治療參數 (護理人員)"> ICU 呼吸治療參數 (護理人員)</label>
+          <label><input type="checkbox" name="option" value="ICU 呼吸治療參數 (RT 人員)"> ICU 呼吸治療參數 (RT 人員)</label>
+          <label><input type="checkbox" name="option" value="ICU/OR 導管處置"> ICU/OR 導管處置</label>
+          <label><input type="checkbox" name="option" value="ICU 導管處置-舊版氣管內管、氣切管路"> ICU 導管處置-舊版氣管內管、氣切管路</label>
+          <label><input type="checkbox" name="option" value="ICU/OR IO"> ICU/OR IO</label>
+          <label><input type="checkbox" name="option" value="ICU 疾病嚴重度分數">ICU 疾病嚴重度分數</label>
+          <label><input type="checkbox" name="option" value="ICU 疼痛指數"> ICU 疼痛指數</label>
+          <label><input type="checkbox" name="option" value="ICU 疼痛評估與處置紀錄"> ICU 疼痛評估與處置紀錄</label>
+    </div>
+
+
+       <div class="section-title" onclick="toggleSubOptions('drug', this)">
+       處方資訊
+        <span class="arrow">&#9654;</span>
+    </div>
+    <div class="sub-options" id="drug">
+        <label><input type="checkbox" name="option" value="門診處方資訊"> 門診處方資訊</label>
+        <label><input type="checkbox" name="option" value="住院處方資訊"> 住院處方資訊</label>
+        <label><input type="checkbox" name="option" value="住院自備藥醫令">住院自備藥醫令</label>
+         <label><input type="checkbox" name="option" value="住院批價醫令"> 住院批價醫令</label>
+          <label><input type="checkbox" name="option" value="住院護理給藥紀錄"> 住院護理給藥紀錄</label>
+          <label><input type="checkbox" name="option" value="急診處方醫令"> 急診處方醫令</label>
+          <label><input type="checkbox" name="option" value="急診自備藥醫令"> 急診自備藥醫令</label>
+          <label><input type="checkbox" name="option" value="急診批價醫令">急診批價醫令</label>
+          <label><input type="checkbox" name="option" value="急診護理給藥紀錄">急診護理給藥紀錄</label>
+          <label><input type="checkbox" name="option" value="抗生素使用原因"> 抗生素使用原因</label>
+        
+    </div>
+
+
+    <button type="button" onclick="showSelections()">顯示申請項目</button>
+</form>
+
+<div id="result"></div>
+
+<script>
+    function toggleSubOptions(subId, titleDiv) {
+        const subDiv = document.getElementById(subId);
+        subDiv.classList.toggle('open');
+
+        const arrow = titleDiv.querySelector('.arrow');
+        arrow.classList.toggle('rotate');
+    }
+
+    function showSelections() {
+        const checkboxes = document.querySelectorAll('input[name="option"]:checked');
+        const selected = Array.from(checkboxes).map(cb => cb.value);
+
+        const resultDiv = document.getElementById('result');
+        if (selected.length > 0) {
+            resultDiv.innerHTML = "<h2>醫整中心所需參數：</h2><ul>" +
+                selected.map(item => `<li>${item}</li>`).join('') +
+                "</ul>";
+        } else {
+            resultDiv.innerHTML = "<p>您尚未勾選任何項目。</p>";
+        }
+    }
+</script>
+
+</body>
+</html>
